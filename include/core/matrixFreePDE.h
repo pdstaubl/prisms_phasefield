@@ -1,6 +1,8 @@
 #ifndef MATRIXFREEPDE_H
 #define MATRIXFREEPDE_H
 
+#include <random>
+
 // dealii headers
 #include <deal.II/base/config.h>
 #include <deal.II/base/quadrature.h>
@@ -494,6 +496,9 @@ protected:
   {
     return 0.0;
   };
+
+  // Random number generator for nucleation
+  mutable std::mt19937 nucleation_rng;
 
   // utility functions
   /*Returns index of given field name if exists, else throw error.*/

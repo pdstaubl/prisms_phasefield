@@ -702,6 +702,15 @@ inputFileReader::declare_nucleation_parameters()
                                   dealii::Patterns::Double(),
                                   "The time after which no nucleation occurs.");
 
+  parameter_handler.declare_entry("Use fixed random seed",
+                                  "false",
+                                  dealii::Patterns::Bool(),
+                                  "Whether or not to use a fixed random seed for stochastic nucleation");
+  parameter_handler.declare_entry("Fixed random seed",
+                                  "0",
+                                  dealii::Patterns::Integer(),
+                                  "A fixed random seed to use for nucleation");
+
   for (const auto &[index, variable] : var_attributes)
     {
       if (variable.nucleating_variable)

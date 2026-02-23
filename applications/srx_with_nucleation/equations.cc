@@ -276,6 +276,12 @@ customPDE<dim, degree>::explicitEquationRHS(
   for (unsigned int i = 0; i < N_rho; i++)
     {
       rhoi = variable_list.get_scalar_value(i + number_ops_total);
+      // Static recovery - simple power law
+      // Set recoveryCoefficient to 0.0 in user inputs to disable.
+      if (this->currentTime > userInputs.nucleation_end_time + globalSeedingTime)
+        {
+          rhoi -= constV(userInputs.dtValue * recovery_coefficient) * rhoi * rhoi;
+        }
       variable_list.set_scalar_value_term_RHS(i + number_ops_total, rhoi);
       variable_list.set_scalar_gradient_term_RHS(i + number_ops_total, nix * constV(0.0));
     }

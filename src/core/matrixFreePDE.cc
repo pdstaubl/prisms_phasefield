@@ -32,7 +32,11 @@ MatrixFreePDE<dim, degree>::MatrixFreePDE(userInputParameters<dim> _userInputs)
         dofHandlersSet_nonconst,
         constraintsDirichletSet,
         constraintsOtherSet)
-{}
+{
+  nucleation_rng.seed(static_cast<unsigned int>(
+    _userInputs.fixed_random_seed +
+    dealii::Utilities::MPI::this_mpi_process(MPI_COMM_WORLD)));
+}
 
 // destructor
 template <int dim, int degree>

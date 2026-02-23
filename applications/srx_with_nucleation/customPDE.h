@@ -102,5 +102,7 @@ private:
   double globalSeedingTime = userInputs.get_model_constant_double("globalSeedingTime");
   double interface_coeff   = std::sqrt(2.0 * KnV / m0);
 
+  double recovery_coefficient = userInputs.get_model_constant_double("recoveryCoefficient");
+
   // ================================================================
 };

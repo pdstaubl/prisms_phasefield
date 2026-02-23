@@ -212,7 +212,14 @@ MatrixFreePDE<dim, degree>::getLocalNucleiList(std::vector<nucleus<dim>> &newnuc
               if ((numbercurrnuclei == 0) || userInputs.multiple_nuclei_per_order_parameter)
                 {
                   // Compute random no. between 0 and 1 (new method)
-                  rand_val = distr(gen);
+                  if (userInputs.use_fixed_random_seed)
+                    {
+                      rand_val = distr(this->nucleation_rng);
+                    }
+                  else
+                    {
+                      rand_val = distr(gen);
+                    }
                   // Nucleation probability
                   double Prob = getNucleationProbability(variable_values,
                                                         element_volume,

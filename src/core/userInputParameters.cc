@@ -789,6 +789,9 @@ userInputParameters<dim>::assign_nucleation_parameters(
     parameter_handler.get_integer("Time steps between nucleation attempts");
   nucleation_start_time = parameter_handler.get_double("Nucleation start time");
   nucleation_end_time   = parameter_handler.get_double("Nucleation end time");
+  
+  use_fixed_random_seed = parameter_handler.get_bool("Use fixed random seed");
+  fixed_random_seed      = parameter_handler.get_integer("Fixed random seed");
 }
 
 template <int dim>

@@ -313,6 +313,9 @@ public:
   unsigned int steps_between_nucleation_attempts;
   double       nucleation_start_time;
   double       nucleation_end_time;
+  
+  bool         use_fixed_random_seed;
+  unsigned int fixed_random_seed;
 
   // Grain remapping parameters
   bool                      grain_remapping_activated;

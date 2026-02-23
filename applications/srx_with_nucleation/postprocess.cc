@@ -27,12 +27,16 @@ customAttributeLoader::loadPostProcessorVariableAttributes()
   unsigned int number_ops_total = number_ops_ini + number_ops_nuc;
 
   std::string all_op_names = "";
+  std::string all_ops_with_grad = "";
   for (unsigned int i = 0; i < number_ops_total; i++)
     {
       all_op_names.append("n" + std::to_string(i));
+      all_ops_with_grad.append("n" + std::to_string(i));
+      all_ops_with_grad.append(", grad(n" + std::to_string(i) + ")");
       if (i < number_ops_total - 1)
         {
           all_op_names.append(", ");
+          all_ops_with_grad.append(", ");
         }
     }
 
@@ -71,6 +75,15 @@ customAttributeLoader::loadPostProcessorVariableAttributes()
   set_dependencies_gradient_term_RHS(3, "");
 
   set_output_integral(3, false);
+
+  // Variable 4
+  set_variable_name(4, "gb_energy_term");
+  set_variable_type(4, SCALAR);
+
+  set_dependencies_value_term_RHS(4, all_ops_with_grad);
+  set_dependencies_gradient_term_RHS(4, "");
+
+  set_output_integral(4, true);
 }
 
 // =============================================================================================
@@ -113,6 +126,8 @@ customPDE<dim, degree>::postProcessedFields(
   // --- Getting the values and derivatives of the model variables ---
 
   scalarvalueType ni;
+  scalarvalueType nj;
+  scalargradType nix;
 
   scalarvalueType max_val = constV(-100.0);
   scalarvalueType max_op  = constV(100.0);
@@ -195,10 +210,40 @@ customPDE<dim, degree>::postProcessedFields(
       sum_n_nuc += ni;
     }
 
+  scalarvalueType gb_energy_term = constV(0.0);
+  scalarvalueType fnV = constV(0.0);
+  for (unsigned int i = 0; i < number_ops_total; i++)
+    {
+      ni = variable_list.get_scalar_value(i);
+      ni = std::max(ni, constV(0.0));
+
+      fnV += (ni * ni * ni * ni / constV(4.0)) - (ni * ni / constV(2.0));
+
+      for (unsigned int j = i+1; j < number_ops_total; j++)
+        {
+          nj = variable_list.get_scalar_value(j);
+          fnV += constV(alpha) * ni *ni * nj * nj;
+        }
+    }
+
+  fnV += constV(0.25);
+  fnV *= constV(m0);
+  gb_energy_term = fnV;
+
+  for (unsigned int i = 0; i < number_ops_total; i++)
+    {
+      nix = variable_list.get_scalar_gradient(i);
+      for (unsigned int j = 0; j < dim; j++)
+        {
+          gb_energy_term += constV(KnV / 2.0) * nix[j] * nix[j];
+        }
+    }
+
   // --- Submitting the terms for the postprocessing expressions ---
 
   pp_variable_list.set_scalar_value_term_RHS(0, feature_ids);
   pp_variable_list.set_scalar_value_term_RHS(1, max_op);
   pp_variable_list.set_scalar_value_term_RHS(2, sum_n_sq);
   pp_variable_list.set_scalar_value_term_RHS(3, sum_n_nuc);
+  pp_variable_list.set_scalar_value_term_RHS(4, gb_energy_term);
 }
