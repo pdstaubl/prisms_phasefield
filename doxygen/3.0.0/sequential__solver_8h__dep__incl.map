@@ -1,0 +1,37 @@
+<map id="/home/runner/work/prisms_phasefield/prisms_phasefield/include/prismspf/solvers/sequential_solver.h" name="/home/runner/work/prisms_phasefield/prisms_phasefield/include/prismspf/solvers/sequential_solver.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="758,5,1015,75"/>
+<area shape="rect" id="Node000002" href="$sequential__auxiliary__solver_8h.html" title=" " alt="" coords="143,123,401,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="745,67,421,125,401,129,400,124,419,120,744,62"/>
+<area shape="rect" id="Node000006" href="$sequential__auxiliary__solver_8cc.html" title=" " alt="" coords="5,240,237,309"/>
+<area shape="poly" id="edge18_Node000001_Node000006" title=" " alt="" coords="745,50,567,59,376,75,215,96,161,110,132,125,117,150,111,180,111,211,115,239,110,240,105,212,105,180,112,148,129,121,160,105,214,91,375,69,567,54,744,44"/>
+<area shape="rect" id="Node000007" href="$sequential__co__nonlinear__solver_8h.html" title=" " alt="" coords="477,123,734,192"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="793,82,689,125,687,120,791,78"/>
+<area shape="rect" id="Node000008" href="$sequential__co__nonlinear__solver_8cc.html" title=" " alt="" coords="344,240,563,309"/>
+<area shape="poly" id="edge19_Node000001_Node000008" title=" " alt="" coords="744,53,661,63,579,78,510,98,485,110,467,124,452,150,445,181,445,211,448,239,443,240,439,212,440,180,447,148,463,121,482,106,508,93,578,73,660,58,744,48"/>
+<area shape="rect" id="Node000009" href="$sequential__linear__solver_8h.html" title=" " alt="" coords="1091,123,1349,192"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="998,77,1123,120,1122,125,996,82"/>
+<area shape="rect" id="Node000010" href="$sequential__linear__solver_8cc.html" title=" " alt="" coords="1259,240,1477,309"/>
+<area shape="poly" id="edge20_Node000001_Node000010" title=" " alt="" coords="1029,44,1127,52,1226,67,1310,89,1341,103,1363,121,1379,149,1385,180,1385,212,1380,240,1375,239,1379,211,1380,181,1374,150,1359,124,1338,108,1308,94,1225,72,1127,58,1029,49"/>
+<area shape="rect" id="Node000011" href="$sequential__self__nonlinear__solver_8h.html" title=" " alt="" coords="758,123,1015,192"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="889,89,889,122,884,122,884,89"/>
+<area shape="rect" id="Node000012" href="$sequential__self__nonlinear__solver_8cc.html" title=" " alt="" coords="933,240,1152,309"/>
+<area shape="poly" id="edge21_Node000001_Node000012" title=" " alt="" coords="988,80,1011,98,1030,121,1044,150,1050,182,1050,240,1045,240,1045,183,1039,152,1026,124,1007,102,984,84"/>
+<area shape="rect" id="Node000013" href="$sequential__solver_8cc.html" title=" " alt="" coords="1424,130,1656,185"/>
+<area shape="poly" id="edge22_Node000001_Node000013" title=" " alt="" coords="1030,58,1210,85,1406,120,1439,127,1438,133,1405,125,1209,90,1029,63"/>
+<area shape="rect" id="Node000003" href="$solver__handler_8h.html" title=" " alt="" coords="601,240,820,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="414,193,602,242,600,247,413,198"/>
+<area shape="rect" id="Node000004" href="$pde__problem_8cc.html" title=" " alt="" coords="777,357,996,412"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="280,205,298,260,313,286,334,307,370,325,419,337,478,344,542,347,668,349,766,355,777,357,777,362,765,360,668,354,542,352,478,349,418,342,368,330,330,311,309,289,293,262,275,207"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="219,203,167,242,164,237,216,198"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="778,314,845,355,842,359,775,319"/>
+<area shape="rect" id="Node000005" href="$solver__handler_8cc.html" title=" " alt="" coords="535,357,753,412"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="685,322,663,359,658,356,680,320"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="648,201,682,238,678,242,644,204"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="552,203,500,242,496,237,548,198"/>
+<area shape="poly" id="edge11_Node000009_Node000003" title=" " alt="" coords="1078,193,821,251,820,246,1077,188"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="1217,206,1200,261,1185,288,1166,311,1128,339,1085,358,1040,372,997,380,996,375,1039,367,1083,353,1125,334,1162,307,1181,285,1195,259,1212,205"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="1276,198,1326,238,1323,242,1272,203"/>
+<area shape="poly" id="edge15_Node000011_Node000003" title=" " alt="" coords="825,202,764,242,761,237,822,197"/>
+<area shape="poly" id="edge16_Node000011_Node000004" title=" " alt="" coords="889,206,889,357,884,357,884,206"/>
+<area shape="poly" id="edge17_Node000011_Node000012" title=" " alt="" coords="945,198,998,237,995,242,941,202"/>
+</map>

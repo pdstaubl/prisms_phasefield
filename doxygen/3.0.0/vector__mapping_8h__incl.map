@@ -1,0 +1,35 @@
+<map id="/home/runner/work/prisms_phasefield/prisms_phasefield/include/prismspf/core/vector_mapping.h" name="/home/runner/work/prisms_phasefield/prisms_phasefield/include/prismspf/core/vector_mapping.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,5,335,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,130,188,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,77,124,124,121,119,181,73"/>
+<area shape="rect" id="Node000003" href="$variable__attributes_8h.html" title=" " alt="" coords="543,123,711,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="336,66,539,117,538,122,335,71"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="285,387,420,412"/>
+<area shape="poly" id="edge19_Node000001_Node000007" title=" " alt="" coords="233,75,256,194,278,267,307,337,334,375,329,378,302,340,273,269,251,195,228,76"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="831,218,1015,243"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="693,160,871,212,870,217,692,165"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="1040,211,1185,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="712,154,1027,208,1026,213,711,159"/>
+<area shape="rect" id="Node000006" href="$type__enums_8h.html" title=" " alt="" coords="482,299,626,339"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="618,164,592,212,566,286,561,285,588,210,613,162"/>
+<area shape="poly" id="edge13_Node000003_Node000007" title=" " alt="" coords="544,156,423,177,371,193,338,213,317,241,309,269,312,301,321,338,338,374,333,377,315,340,306,301,304,269,312,239,335,209,369,188,422,172,543,151"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="902,387,961,412"/>
+<area shape="poly" id="edge16_Node000003_Node000009" title=" " alt="" coords="712,145,847,153,1000,166,1130,184,1175,196,1200,209,1211,225,1216,241,1216,257,1210,272,1187,299,1151,324,1107,345,1060,363,975,390,974,385,1058,358,1105,340,1148,319,1183,295,1206,269,1211,256,1211,242,1207,228,1196,213,1173,201,1129,189,999,171,847,158,712,150"/>
+<area shape="rect" id="Node000010" href="$types_8h.html" title=" " alt="" coords="365,218,527,243"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="589,165,483,215,481,210,586,160"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="331,306,391,331"/>
+<area shape="poly" id="edge17_Node000003_Node000011" title=" " alt="" coords="544,156,487,165,430,177,383,193,366,202,355,212,346,231,344,252,353,292,348,294,339,252,341,229,351,209,363,198,381,188,429,172,486,159,543,150"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="602,218,653,243"/>
+<area shape="poly" id="edge14_Node000003_Node000012" title=" " alt="" coords="630,163,630,204,625,204,625,163"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="677,218,719,243"/>
+<area shape="poly" id="edge15_Node000003_Node000013" title=" " alt="" coords="645,161,682,205,678,209,641,165"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="744,218,807,243"/>
+<area shape="poly" id="edge18_Node000003_Node000014" title=" " alt="" coords="661,160,745,209,743,214,658,165"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="507,341,396,384,394,379,505,336"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="521,387,587,412"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="557,339,557,373,551,373,551,339"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="627,332,889,387,888,392,626,338"/>
+<area shape="poly" id="edge10_Node000010_Node000006" title=" " alt="" coords="462,241,521,288,518,292,459,246"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="445,245,430,288,404,340,375,378,371,375,400,337,425,286,440,243"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="436,245,384,298,380,294,433,242"/>
+</map>
