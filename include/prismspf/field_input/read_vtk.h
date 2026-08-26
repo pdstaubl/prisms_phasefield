@@ -124,7 +124,7 @@ ReadUnstructuredVTK<dim, number>::ReadUnstructuredVTK(
   // Create a reader for the vtk file and update it
   // vtkNew is a smart pointer so we don't need to manage it with delete
   reader = vtkNew<vtkUnstructuredGridReader>();
-  reader->SetFileName(this->ic_file.filename.c_str());
+  reader->SetFileName(this->ic_file.file_name.c_str());
   reader->Update();
 
   // Check that the file is an unstructured grid
@@ -177,8 +177,26 @@ ReadUnstructuredVTK<dim, number>::ReadUnstructuredVTK(
   n_cells  = n_cells_vtk;
 
   // Get the number of scalars and vectors
-  n_scalars = reader->GetNumberOfScalarsInFile();
-  n_vectors = reader->GetNumberOfVectorsInFile();
+  // PHIL 8/11/2026, these functions are broken in vtk 9.6.2 on Mac OSX Tahoe w/ command line tools 26.6.0.0.1781586589 
+  // n_scalars = reader->GetNumberOfScalarsInFile();
+  // n_vectors = reader->GetNumberOfVectorsInFile();
+
+  n_scalars = 0;
+  n_vectors = 0;
+
+  vtkPointData *pointData = output->GetPointData();
+  for (int i = 0; i < pointData->GetNumberOfArrays(); ++i)
+    {
+      vtkDataArray *array = pointData->GetArray(i);
+      if (array && array->GetNumberOfComponents() == 1)
+        {
+          n_scalars++;
+        }
+      else if (array && array->GetNumberOfComponents() > 1)
+        {
+          n_vectors++;
+        }
+    }
 }
 
 template <unsigned int dim, typename number>
@@ -214,11 +232,23 @@ template <unsigned int dim, typename number>
 inline std::vector<std::string>
 ReadUnstructuredVTK<dim, number>::get_scalars_names()
 {
-  std::vector<std::string> scalars_names(n_scalars);
+  /*std::vector<std::string> scalars_names(n_scalars);
   for (unsigned int i = 0; i < n_scalars; ++i)
     {
       scalars_names[i] = reader->GetScalarsNameInFile(static_cast<int>(i));
     }
+  return scalars_names;*/
+
+  std::vector<std::string> scalars_names = {};
+
+  vtkPointData* pointData = reader->GetOutput()->GetPointData();
+  for (int i = 0; i < pointData->GetNumberOfArrays(); ++i) {
+      vtkDataArray* array = pointData->GetArray(i);
+      if (array && array->GetNumberOfComponents() == 1) {
+          scalars_names.push_back(array->GetName());
+      }
+  }
+
   return scalars_names;
 }
 
@@ -226,11 +256,23 @@ template <unsigned int dim, typename number>
 inline std::vector<std::string>
 ReadUnstructuredVTK<dim, number>::get_vectors_names()
 {
-  std::vector<std::string> vectors_names(n_vectors);
+  /*std::vector<std::string> vectors_names(n_vectors);
   for (unsigned int i = 0; i < n_vectors; ++i)
     {
       vectors_names[i] = reader->GetVectorsNameInFile(static_cast<int>(i));
     }
+  return vectors_names;*/
+
+  std::vector<std::string> vectors_names = {};
+
+  vtkPointData* pointData = reader->GetOutput()->GetPointData();
+  for (int i = 0; i < pointData->GetNumberOfArrays(); ++i) {
+      vtkDataArray* array = pointData->GetArray(i);
+      if (array && array->GetNumberOfComponents() > 1) {
+          vectors_names.push_back(array->GetName());
+      }
+  }
+
   return vectors_names;
 }
 
@@ -271,7 +313,7 @@ ReadUnstructuredVTK<dim, number>::get_scalar_value(const dealii::Point<dim> &poi
   bool interpolate = false;
   for (unsigned int i = 0; i < dim; i++)
     {
-      if (std::abs(point_in_dataset[i] - point_vector[i]) > Defaults::mesh_tolerance)
+      if (std::abs(point_in_dataset[i] - point_vector[i]) > 1e-15) // TODO: fix hardcoded value (was Defaults::mesh_tolerance)
         {
           interpolate = true;
         }
@@ -296,7 +338,7 @@ ReadUnstructuredVTK<dim, number>::get_scalar_value(const dealii::Point<dim> &poi
 
       vtkGenericCell *cell    = vtkGenericCell::New();
       const vtkIdType cell_id = cell_locator->FindCell(point_vector.data(),
-                                                       Defaults::mesh_tolerance,
+                                                       1e-15, // TODO: fix hardcoded value (was Defaults::mesh_tolerance)
                                                        cell,
                                                        sub_id,
                                                        pcoords.data(),
@@ -358,7 +400,7 @@ ReadUnstructuredVTK<dim, number>::get_vector_value(const dealii::Point<dim> &poi
   bool interpolate = false;
   for (unsigned int i = 0; i < dim; i++)
     {
-      if (std::abs(point_in_dataset[i] - point_vector[i]) > Defaults::mesh_tolerance)
+      if (std::abs(point_in_dataset[i] - point_vector[i]) > 1e-15) // TODO: fix hardcoded value (was Defaults::mesh_tolerance)
         {
           interpolate = true;
         }
@@ -387,7 +429,7 @@ ReadUnstructuredVTK<dim, number>::get_vector_value(const dealii::Point<dim> &poi
 
           vtkGenericCell *cell    = vtkGenericCell::New();
           const vtkIdType cell_id = cell_locator->FindCell(point_vector.data(),
-                                                           Defaults::mesh_tolerance,
+                                                           1e-15, // TODO: fix hardcoded value (was Defaults::mesh_tolerance)
                                                            cell,
                                                            sub_id,
                                                            pcoords.data(),
