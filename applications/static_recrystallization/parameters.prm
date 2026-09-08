@@ -21,6 +21,7 @@ end
 subsection output
   set condition = EQUAL_SPACING
   set number = 100
+  set file type = pvtu
 end
 
 subsection input file: 0
