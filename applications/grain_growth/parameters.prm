@@ -28,6 +28,10 @@ subsection grain reassignment
   set load grain structure = false
 end
 
+# The number of order parameters to use when solving the problem,
+# must be set to 5 or larger for this app
+set Model constant num_order_parameters = 30, INT
+
 set Model constant m_well = 1.0, DOUBLE
 set Model constant kappa = 0.1, DOUBLE
 set Model constant alpha = 1.5, DOUBLE
