@@ -1,0 +1,38 @@
+set mesh type = rectangular
+
+subsection Rectangular mesh
+  set x size = 3000.0
+  set y size = 3000.0
+  set x subdivisions = 1
+  set y subdivisions = 1
+  set x periodic = true
+  set y periodic = true
+end
+
+set global refinement = 9
+
+set time step = 0.01
+set final time = 100.0
+
+subsection output
+  set condition = EQUAL_SPACING
+  set number = 20
+end
+
+set use grain reassignment = true
+
+subsection grain reassignment
+  set steps between reassignment = 200
+  set exclusion distance = 150.0
+  set grain identification threshold = 1e-2
+  set load grain structure = false
+end
+
+subsection input file: 0
+  set file name = polycrystal_input.vtk
+  set file variables = n0,n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15,n16,n17,n18
+  set format = vtk
+  set simulation variables = n0,n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15,n16,n17,n18
+end
+
+set Model constant num_order_parameters = 20, INT
