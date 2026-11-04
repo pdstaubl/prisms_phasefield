@@ -205,7 +205,61 @@ def write_order_parameters(grain_id_array, coords, gid_mapping, output_filename)
                                 "double", field_name, op_array)
     # end for
     print("All order parameters written to VTK.")
+
+
+def write_array_flat_binary(filename, output_array):
+    with open(filename, "wb") as f:
+        f.write(output_array.tobytes())
+    print("Wrote array to binary file {}".format(filename))
+
+
+def write_fb_order_parameters(grain_id_array, gid_mapping, output_filename):
+    print("Writing flat binary order parameters.")
+    s = output_filename.split(".")[:-1]
+    basename = ".".join(s)
+    print("File name format: {}_n*.dat".format(basename))
+    
+    Nx, Ny = grain_id_array.shape
+    
+    # Create order parameters one at a time
+    op_id_list = []
+    for gid in gid_mapping.keys():
+        op_id_list.append(gid_mapping[gid])
+    op_id_list = np.unique(op_id_list)
+    
+    # Iterate over the order parameters
+    for n, op in enumerate(op_id_list):
+        field_name = "n{}".format(n + 1)
         
+        print("Computing order parameter field {}".format(field_name))
+        op_array = np.zeros(grain_id_array.shape)
+        for gid in gid_mapping.keys():
+            if op == gid_mapping[gid]:
+                op_array[grain_id_array == gid] = 1.0
+        
+        subfilename = "{}_{}.dat".format(basename, field_name)
+        write_array_flat_binary(subfilename, op_array)
+    # end for
+    print("All order parameters written to flat binary file series.")
+    print("Copy the following for the PRISMS-PF input file:\n")
+    for n, op in enumerate(op_id_list):
+        field_name = "n{}".format(n + 1)
+        subfilename = "{}_{}.dat".format(basename, field_name)
+        print("subsection input file: {}".format(n))
+        print("  set file name = {}".format(subfilename))
+        print("  set file variables = {}".format(field_name))
+        print("  set format = binary")
+        print("  set simulation variables = {}".format(field_name))
+        print("  set x data points = {:d}".format(Nx))
+        print("  set y data points = {:d}".format(Ny))
+        print("  set z data points = {:d}".format(1))
+        print("end\n")
+    print("# --- End Field Inputs for Parameters File ---")
+    if len(op_id_list) > 10:
+        print("\nWARNING!! You will be reading more than 10 files!")
+        print("WARNING!! You must change the following in the PF application code (main.cc) and recompile:")
+        print("UserInputParameters<dim>(cli_options.get_parameters_filename(), {});\n".format(len(op_id_list)))
+
     
 if __name__ == "__main__":
     print("Loading seeds from grains_hillert.txt")
@@ -218,6 +272,7 @@ if __name__ == "__main__":
     ny = int(Ly / dx) + 1
     exclusion_dist = int(150.0 / dx) # in voxels
     output_filename = "polycrystal_input.vtk"
+    write_flat_binary = True
     
     print("Calculating Voronoi tesselation.")
     tree = KDTree(seeds, boxsize=(Lx, Ly))
@@ -237,17 +292,21 @@ if __name__ == "__main__":
     
     x_coords = np.linspace(0, Lx, num=nx)
     y_coords = np.linspace(0, Ly, num=ny)
-    write_order_parameters(gid, (x_coords, y_coords), op_mapping, output_filename)
+    if write_flat_binary:
+        write_fb_order_parameters(gid, op_mapping, output_filename)
+    else:
+        write_order_parameters(gid, (x_coords, y_coords), op_mapping, output_filename)
+        all_fields = []
+        for i in range(num_ops):
+            all_fields.append("n{}".format(i))
+        all_fields_str = ",".join(all_fields)
+        print("Add the following to the PRISMS-PF parameters file:")
+        print("subsection input file: 0")
+        print("  set file name = {}".format(output_filename))
+        print("  set file variables = {}".format(all_fields_str))
+        print("  set format = vtk")
+        print("  set simulation variables = {}".format(all_fields_str))
+        print("end\n")
     
-    print("Done.\n\n")
-    all_fields = []
-    for i in range(num_ops):
-        all_fields.append("n{}".format(i))
-    all_fields_str = ",".join(all_fields)
-    print("Add the following to the PRISMS-PF parameters file:")
-    print("subsection input file: 0")
-    print("  set file name = {}".format(output_filename))
-    print("  set file variables = {}".format(all_fields_str))
-    print("  set format = vtk")
-    print("  set simulation variables = {}".format(all_fields_str))
-    print("end\n")
+    print("\nDone!\n\n")
+    

@@ -29,10 +29,193 @@ subsection grain reassignment
 end
 
 subsection input file: 0
-  set file name = polycrystal_input.vtk
-  set file variables = n0,n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15,n16,n17,n18
-  set format = vtk
-  set simulation variables = n0,n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15,n16,n17,n18
+  set file name = polycrystal_input_n1.dat
+  set file variables = n1
+  set format = binary
+  set simulation variables = n1
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 1
+  set file name = polycrystal_input_n2.dat
+  set file variables = n2
+  set format = binary
+  set simulation variables = n2
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 2
+  set file name = polycrystal_input_n3.dat
+  set file variables = n3
+  set format = binary
+  set simulation variables = n3
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 3
+  set file name = polycrystal_input_n4.dat
+  set file variables = n4
+  set format = binary
+  set simulation variables = n4
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 4
+  set file name = polycrystal_input_n5.dat
+  set file variables = n5
+  set format = binary
+  set simulation variables = n5
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 5
+  set file name = polycrystal_input_n6.dat
+  set file variables = n6
+  set format = binary
+  set simulation variables = n6
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 6
+  set file name = polycrystal_input_n7.dat
+  set file variables = n7
+  set format = binary
+  set simulation variables = n7
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 7
+  set file name = polycrystal_input_n8.dat
+  set file variables = n8
+  set format = binary
+  set simulation variables = n8
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 8
+  set file name = polycrystal_input_n9.dat
+  set file variables = n9
+  set format = binary
+  set simulation variables = n9
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 9
+  set file name = polycrystal_input_n10.dat
+  set file variables = n10
+  set format = binary
+  set simulation variables = n10
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 10
+  set file name = polycrystal_input_n11.dat
+  set file variables = n11
+  set format = binary
+  set simulation variables = n11
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 11
+  set file name = polycrystal_input_n12.dat
+  set file variables = n12
+  set format = binary
+  set simulation variables = n12
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 12
+  set file name = polycrystal_input_n13.dat
+  set file variables = n13
+  set format = binary
+  set simulation variables = n13
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 13
+  set file name = polycrystal_input_n14.dat
+  set file variables = n14
+  set format = binary
+  set simulation variables = n14
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 14
+  set file name = polycrystal_input_n15.dat
+  set file variables = n15
+  set format = binary
+  set simulation variables = n15
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 15
+  set file name = polycrystal_input_n16.dat
+  set file variables = n16
+  set format = binary
+  set simulation variables = n16
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 16
+  set file name = polycrystal_input_n17.dat
+  set file variables = n17
+  set format = binary
+  set simulation variables = n17
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 17
+  set file name = polycrystal_input_n18.dat
+  set file variables = n18
+  set format = binary
+  set simulation variables = n18
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
+end
+
+subsection input file: 18
+  set file name = polycrystal_input_n19.dat
+  set file variables = n19
+  set format = binary
+  set simulation variables = n19
+  set x data points = 513
+  set y data points = 513
+  set z data points = 1
 end
 
 set Model constant num_order_parameters = 20, INT

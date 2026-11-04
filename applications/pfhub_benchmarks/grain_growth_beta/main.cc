@@ -20,7 +20,7 @@ main(int argc, char *argv[])
 
   constexpr unsigned int dim        = 2;
   constexpr unsigned int degree     = 1;
-  UserInputParameters<dim> user_inputs(cli_options.get_parameters_filename());
+  UserInputParameters<dim> user_inputs(cli_options.get_parameters_filename(), 20);
 
   unsigned int num_grains = user_inputs.user_constants.get_int("num_order_parameters");
 
